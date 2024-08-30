@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+  outline: none;
+}
+.ring{
+  background-image: url(/public/icons/ring.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  padding: 24px;
+  border: 0;
+  box-shadow: 0 0 #00000000 !important;
+  img{
+    width: 12px;
+    height: 12px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+body{
+  background: radial-gradient(63.88% 129.61% at 25.55% 31.91%, #20135C 0%, #140739 92.82%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.main{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+.search-label{
+  box-shadow: 0px -5px 25px 0px #00032080;
+}
+aside{
+  box-shadow: 0px -5px 25px 0px #00032080;
+}
+.widget{
+  border-radius: 24px;
+}
+.balance-scroll{
+  scrollbar-width: none;
+  
+}
+.first{
+  width: 239px;
+  height: 310px;
+}
+.widget-box{
+  font-size: 7px !important;
+}
+.transaction{
+  width: 100%;
+}
+.wallet-chart-container{
+  height: 43px;
+}
