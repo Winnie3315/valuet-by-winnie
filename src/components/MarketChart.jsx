@@ -15,6 +15,7 @@ const MarketChart = () => {
                 borderColor: 'rgba(0, 150, 255, 1)',
                 borderWidth: 2,
                 tension: 0.4,
+                borderRadius: 100,
             },
         ],
     };
@@ -26,14 +27,13 @@ const MarketChart = () => {
             y: {
                 beginAtZero: true,
                 title: {
-                    display: true,
-                    text: 'Price ($)',
+                    display: false,
                 },
             },
             x: {
+                display: false,
                 title: {
-                    display: true,
-                    text: 'Date',
+                    display: false,
                 },
             },
         },
@@ -49,10 +49,12 @@ const MarketChart = () => {
     };
 
     return (
-        <div className="bg-[#161245] p-4 rounded-xl text-white shadow-lg w-[665px] h-[232px]">
+        <div className="bg-[#161245] p-4 rounded-xl text-white shadow-lg w-[665px] min-w-[600px] h-[232px]">
+            <div className="textClass flex gap-[24px]">
             <h2 className="text-xl font-semibold mb-2">Market</h2>
             <h3 className="text-lg mb-4">Bitcoin</h3>
-            <div className="h-[200px] w-full">
+            </div>
+            <div className="h-[170px] w-full">
                 <Line data={data} options={options} />
             </div>
         </div>

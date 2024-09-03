@@ -1,31 +1,80 @@
-// import BalanceCard from "../src/components/BalanceCard";
-// import SpendingChart from "../src/components/SpendingChart";
-// import Widget from "../src/components/Widget";
-// import MarketChart from "../src/components/MarketChart";
-import TransactionCard from "../src/components/TransactonCard";
-import Wallet from "../src/components/Wallet";
+import React, { useEffect, useState } from 'react';
+import SpendingChart from '../src/components/SpendingChart';
+import MarketChart from '../src/components/MarketChart';
+import Wallet from '../src/components/Wallet';
+import News from '../src/components/News';
+import { useHttpRequest } from '../src/hooks/http.request';
+import BalanceCard from '../src/components/BalanceCard';
 
 function Overview() {
-    return ( <>
-        <div className="head flex justify-between items-center">
-            <div className="left">
-                <h4 className="text-white text-lg">Overview</h4>
-            </div>
-            <div className="right">
-                <button className="widget bg-btn-cus-sign py-[5px] pe-[22px] ps-[22px]  text-white">Add Widget</button>
-            </div>
+  const [wallets, setWallets] = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const { request, loading, error } = useHttpRequest('http://localhost:8080');
+  const user = JSON.parse(localStorage.getItem("user"));
 
-        </div>
+  useEffect(() => {
+    const fetchWallets = async () => {
+      const walletData = await request('/wallets?user_id=' + user.user_id, 'get');
+      if (walletData) {
+        setWallets(walletData);
+      }
+    };
 
-        <div className="body-top flex">
-        git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Winnie3315/valuet-by-winnie.git
-git push -u origin main
+    const fetchTransactions = async () => {
+      const transactionData = await request('/transactions?user_id=' + user.user_id, 'get');
+      if (transactionData) {
+        setTransactions(transactionData);
+      }
+    };
+
+    fetchWallets();
+    fetchTransactions();
+  }, [request, user.user_id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <>
+      <div className="head flex justify-between items-center mb-2">
+        <div className="left">
+          <h4 className="text-white text-lg">Overview</h4>
         </div>
-    </> );
+      </div>
+
+      <div className="body-top flex w-[1200px] flex-col gap-2.5">
+        <div className="top grid gap-[40px]">
+          <BalanceCard transactions={transactions} />
+          <SpendingChart />
+          <div className="widget-container w-full grid ">
+            {wallets.slice(0, 4).map((wallet, index) => (
+              <Wallet 
+                key={wallet.id || index} 
+                balance={wallet.balance} 
+                name={wallet.wallet} 
+                currency={wallet.currency}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="bottom flex w-[60%] max-w-[1200px]">
+          <MarketChart />
+          <div className="news bg-[#161245] w-[40%] p-[20px] max-w-[1200px]">
+            <p className="text-xl text-white">Recent News</p>
+            <div className="news-box h-[120px] overflow-auto flex flex-col gap-[12px] border-t-[#2D317A] border-t-2">
+              <News />
+              <News />
+              <News />
+              <News />
+              <News />
+              <News />
+              <News />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Overview;

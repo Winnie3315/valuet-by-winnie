@@ -62,3 +62,90 @@ aside{
 .wallet-chart-container{
   height: 43px;
 }
+.balance{
+  transform: translate(-50%, -50%);
+}
+.widget-container{
+  max-width: 800px;
+  grid-template-columns: repeat(2,1fr);
+  gap: 40px;
+}
+.body-top{
+  gap: 20px;
+}
+.top{
+  gap: 20px;
+  grid-template-columns: repeat(3,1fr);
+}
+.balance-card{
+  width: 100%;
+  max-width: 310px;
+}
+.news-box{
+  border-top: #2D317A solid 2px;
+  padding-top: 18px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  scrollbar-width: none;
+  height: 150px;
+  position: relative;
+}
+
+
+.bottom{
+  gap: 40px;
+}
+.total-width{
+  width: 105px;
+  height: 105px;
+
+}
+.wallet-top{
+  gap: 40px;
+  align-items: center;
+}
+.wallet-container{
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 150px;
+}
+.sec-total{
+    flex-wrap: wrap;
+  justify-content: center;
+}
+.wallet-bottom{
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+.transactions-mini{
+  .left{
+    padding-right: 20px;
+  }
+  .center{
+    display: flex;
+      justify-content: space-around !important;
+  }
+}
+.transactions-box{
+  border-top: #2D317A solid 2px;
+  padding-top: 18px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  scrollbar-width: none;
+  height: 310px;
+  position: relative;
+}
+.transactions{
+  padding: 20px;
+  width: 565px;
+  border-radius: 12px;
+}

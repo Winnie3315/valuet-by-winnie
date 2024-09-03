@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "id": "9b1a",
+      "user_id": "c932ac7a-d8fe-40e9-979b-8ad2c5ad8c05",
+      "email": "daw@gmail.com",
+      "name": "daw",
+      "surname": "dawdaw",
+      "password": "dawdaw"
+    },
+    {
+      "id": "5cc6",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "email": "sah@gmail.com",
+      "name": "шеди ",
+      "surname": "sah",
+      "password": "Parol1234"
+    }
+  ],
+  "wallets": [
+    {
+      "id": "4f4b4478-08d1-4c4c-a2e5-d453f4dc2f76",
+      "created_at": "03.09.2024",
+      "updated_at": "03.09.2024",
+      "user_id": "c932ac7a-d8fe-40e9-979b-8ad2c5ad8c05",
+      "wallet": "sobaka",
+      "balance": null,
+      "currency": "USDT"
+    },
+    {
+      "id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "created_at": "03.09.2024",
+      "updated_at": "03.09.2024",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "wallet": "Wal",
+      "balance": 11999999878.619995,
+      "currency": "BTC"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "788f7fad-9003-4115-a019-7ea586b54f12",
+      "created_at": "20240903, 21:22",
+      "updated_at": "21:22:37",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 100,
+      "commission": 2,
+      "category": "Categ",
+      "description": "I wana help",
+      "sender_wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "sender_wallet": {
+        "created_at": "03.09.2024",
+        "updated_at": "03.09.2024",
+        "name": "Wal",
+        "currency": "BTC",
+        "balance": 11999999878.619995
+      },
+      "recipient_wallet": {
+        "balance": null
+      }
+    }
+  ]
+}

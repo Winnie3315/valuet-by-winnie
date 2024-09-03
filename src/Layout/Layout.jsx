@@ -1,7 +1,16 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Layout() {
+    const navigate = useNavigate()
+    function logout(){
+        localStorage.removeItem("user")
+        navigate("/login")
+    }
+    function findLocation(location){
+        navigate(location)
+    }
+    let user = JSON.parse(localStorage.getItem('user'))
     return ( <>
         <div className="wrapper">
             <div className="wrap flex">
@@ -11,15 +20,21 @@ function Layout() {
                                     <img className="w-[99px]" src="/icons/valuet.svg" alt="logo" />
                                 </div>
                                 <div className="pages flex flex-col gap-[20px]">
-                                    <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
+                                    <div
+                                    onClick={() => findLocation("/")}
+                                    className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img src="/icons/overview.svg" alt="" />
                                         <p>Overview</p>
                                     </div>
-                                    <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
+                                    <div 
+                                    onClick={() => findLocation("/wallet")} 
+                                    className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img src="/icons/wallet.svg" alt="" />
                                         <p>Wallets</p>
                                     </div>
-                                    <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
+                                    <div
+                                    onClick={() => findLocation("/transactions")}  
+                                    className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img src="/icons/transactions.svg" alt="" />
                                         <p>Transictions</p>
                                     </div>
@@ -33,11 +48,13 @@ function Layout() {
                                 <div className="line w-[200px] h-0.5 bg-[#018FFF]"></div>
                                     <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img className="w-[21px] h-[21px]" src="/icons/ring.svg" alt="" />
-                                        <p>Name</p>
+                                        <p className="flex">{user.name} </p>
                                     </div>
-                                    <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
+                                    <div
+                                    onClick={logout}
+                                    className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img className="w-[21px] h-[21px]" src="/icons/out.svg" alt="" />
-                                        <p>Log out</p>
+                                        <p className="cursor-pointer">Log out</p>
                                     </div>
                             </div>
                         </aside>
