@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function Layout() {
     const navigate = useNavigate()
@@ -13,8 +13,8 @@ function Layout() {
     let user = JSON.parse(localStorage.getItem('user'))
     return ( <>
         <div className="wrapper">
-            <div className="wrap flex">
-                        <aside className="w-[220px] h-[100vh] flex flex-col justify-between bg-aside-bg">
+            <div className="wrap flex ">
+                        <aside className="w-[220px] h-[100vh] flex flex-col justify-between bg-aside-bg xs:hidden">
                             <div className="top mt-[17px]">
                                 <div className="logo flex items-center justify-center mb-[40px]">
                                     <img className="w-[99px]" src="/icons/valuet.svg" alt="logo" />
@@ -38,7 +38,9 @@ function Layout() {
                                         <img src="/icons/transactions.svg" alt="" />
                                         <p>Transictions</p>
                                     </div>
-                                    <div className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
+                                    <div
+                                    onClick={() => findLocation("/exchange")}
+                                    className="pt-[13px] pr-[78px] pb-[13px] pl-[16px] flex items-center gap-3 text-white">
                                         <img src="/icons/exchange.svg" alt="" />
                                         <p>Exchange</p>
                                     </div>
@@ -61,7 +63,7 @@ function Layout() {
 
 
                         <main className="w-[100%] pl-[20px]">
-                            <header className="flex justify-between w-[100%] h-[88px] items-center p-[20px] border-b-[#2D317A] border-b-2 mb-[20px]">
+                            <header className="xs:hidden flex justify-between w-[100%] h-[88px] items-center p-[20px] border-b-[#2D317A] border-b-2 mb-[20px]">
                                 <div className="left">
                                     <div className="search">
                                         <label htmlFor="search" className="flex search-label bg-[#161245] rounded-lg h-[32px]">
@@ -86,6 +88,32 @@ function Layout() {
                    
         </div>
 
+        <div className="tools flex md:hidden items-center justify-around fixed bottom-0 right-0 left-0">
+            <Link to="/">
+                <button className="flex gap-2 justify-center items-center flex-col">
+                    <img src="/icons/overview.svg" alt="home" />
+                    <span className="text-white">Overview</span>
+                </button>
+            </Link>
+            <Link to="/wallet">
+                <button className="flex gap-2 justify-center items-center flex-col">
+                    <img src="/icons/wallet.svg" alt="wallet" />
+                    <span className="text-white">Wallet</span>
+                </button>
+            </Link>
+            <Link to="/transactions">
+                <button className="flex gap-2 justify-center items-center flex-col">
+                    <img src="/icons/transactions.svg" alt="transactions" />
+                    <span className="text-white">transactions</span>
+                </button>
+            </Link>
+            <Link to="/exchange">
+                <button className="flex gap-2 justify-center items-center flex-col">
+                    <img src="/public/icons/exchange.svg" alt="exchange" />
+                    <span className="text-white">Exchange</span>
+                </button>
+            </Link>
+        </div>
     </> );
 }
 

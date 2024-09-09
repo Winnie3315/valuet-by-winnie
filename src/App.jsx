@@ -8,6 +8,7 @@ import Wallets from '../pages/Wallets';
 import Transactions from '../pages/Transactions';
 import AddWallet from '../pages/AddWallet';
 import AddTransaction from '../pages/AddTransaction';
+import Convertation from '../pages/Convertation';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route index element={<Overview />} />
             <Route path="/wallet" element={<Wallets />} />
             <Route path="/transactions" element={<Transactions />} />
+            <Route path="/exchange" element={<Convertation />} />
         </Route>
         <Route path="/Login" element={<Login />} />
         <Route path="/add-wallet" element={<AddWallet />} />

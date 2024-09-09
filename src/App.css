@@ -4,6 +4,9 @@
 *{
   outline: none;
 }
+body{
+  background: radial-gradient(63.88% 129.61% at 25.55% 31.91%, #20135C 0%, #140739 92.82%);
+}
 .ring{
   background-image: url(/public/icons/ring.svg);
   background-position: center;
@@ -77,6 +80,26 @@ aside{
   gap: 20px;
   grid-template-columns: repeat(3,1fr);
 }
+@media (max-width: 639px) {
+  .top{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .widget-container{
+    max-width: 800px;
+    grid-template-columns: repeat(1,1fr);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+    .wallet-card{
+      width: 100%,  !important;
+    }
+  }
+}
+
 .balance-card{
   width: 100%;
   max-width: 310px;

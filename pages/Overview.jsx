@@ -34,6 +34,8 @@ function Overview() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  const backgroundColor = wallets.length > 0 ? wallets[0].background : '';
+
   return (
     <>
       <div className="head flex justify-between items-center mb-2">
@@ -42,9 +44,9 @@ function Overview() {
         </div>
       </div>
 
-      <div className="body-top flex w-[1200px] flex-col gap-2.5">
-        <div className="top grid gap-[40px]">
-          <BalanceCard transactions={transactions} />
+      <div className="body-top xs:w-full flex w-full max-w-[1200px] flex-col gap-2.5">
+        <div className="top xs:flex xs:flex-col xs:justify-center xs:items-center grid gap-[40px]">
+          <BalanceCard transactions={transactions} background={backgroundColor} />
           <SpendingChart />
           <div className="widget-container w-full grid ">
             {wallets.slice(0, 4).map((wallet, index) => (
@@ -53,11 +55,13 @@ function Overview() {
                 balance={wallet.balance} 
                 name={wallet.wallet} 
                 currency={wallet.currency}
+                walletId={wallet.id}
+                background={wallet.background}
               />
             ))}
           </div>
         </div>
-        <div className="bottom flex w-[60%] max-w-[1200px]">
+        <div className="bottom xs:hidden flex w-[60%] max-w-[1200px]">
           <MarketChart />
           <div className="news bg-[#161245] w-[40%] p-[20px] max-w-[1200px]">
             <p className="text-xl text-white">Recent News</p>

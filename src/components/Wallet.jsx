@@ -5,32 +5,41 @@ import { useHttpRequest } from '../hooks/http.request';
 
 Chart.register(...registerables);
 
-function Wallet({currency, balance, name}) {
+function Wallet({ currency, balance, name, walletId, background }) {
     const [dataPoints, setDataPoints] = useState([]);
     const { request, loading, error } = useHttpRequest('http://localhost:8080');
+
     useEffect(() => {
         const fetchData = async () => {
-            const transactionsData = await request('/transactions?wallet_id=your_wallet_id'); // Adjust path as needed
+            try {
+                const transactionsData = await request(`/transactions?wallet_id=${walletId}`, 'get');
 
-            if (transactionsData) {
-                const formattedData = transactionsData.map(transaction => ({
-                    x: new Date(transaction.date).toLocaleDateString(),
-                    y: transaction.amount,
-                }));
+                if (transactionsData && transactionsData.length) {
+                    const formattedData = transactionsData.map(transaction => ({
+                        x: new Date(transaction.created_at).toLocaleDateString(),
+                        y: transaction.amount,
+                    }));
 
-                setDataPoints(formattedData);
+                    setDataPoints(formattedData);
+                } else {
+                    setDataPoints([]);
+                }
+            } catch (err) {
+                console.error('Error fetching transactions:', err);
             }
         };
 
-        fetchData();
-    }, [request]);
+        if (walletId) {
+            fetchData();
+        }
+    }, [request, walletId]);
 
     const data = {
-        labels: dataPoints.map(point => point.x),
+        labels: dataPoints.length ? dataPoints.map(point => point.x) : ['No Data'],
         datasets: [
             {
-                label: 'Ethereum Price',
-                data: dataPoints.map(point => point.y),
+                label: 'Transaction Amount',
+                data: dataPoints.length ? dataPoints.map(point => point.y) : [0],
                 fill: false,
                 borderColor: 'rgba(0, 150, 255, 1)',
                 borderWidth: 2,
@@ -46,7 +55,7 @@ function Wallet({currency, balance, name}) {
             y: {
                 beginAtZero: true,
                 ticks: {
-                    display: false,
+                    display: true,
                 },
             },
             x: {
@@ -54,7 +63,7 @@ function Wallet({currency, balance, name}) {
                     display: false,
                 },
                 ticks: {
-                    display: false,
+                    display: true,
                 },
             },
         },
@@ -70,11 +79,24 @@ function Wallet({currency, balance, name}) {
     };
 
     return (
-        <div className="wallet-card bg-gradient-to-r from-purple-900 to-blue-900 p-4 rounded-xl text-white shadow-lg !w-[300px] h-[148px]">
+        <div
+            className="wallet-card p-4 rounded-xl text-white shadow-lg !w-[300px] h-[148px]"
+            style={{ background }}
+        >
             <h2 className="text-xl font-semibold">{name}</h2>
-            <h3 className="text-[16px] text-right font-bold mt-1">{balance} {currency}</h3>
+            <h3 className="text-[16px] text-right font-bold mt-1">
+                {balance.toLocaleString()} {currency}
+            </h3>
             <div className="wallet-chart-container h-[70px] w-full mt-2">
-                {loading ? <p>Loading...</p> : error ? <p>Error: {error}</p> : <Line data={data} options={options} />}
+                {loading ? (
+                    <p>Loading...</p>
+                ) : error ? (
+                    <p>Error: {error}</p>
+                ) : dataPoints.length > 0 ? (
+                    <Line data={data} options={options} />
+                ) : (
+                    <p>No transactions to display</p>
+                )}
             </div>
         </div>
     );

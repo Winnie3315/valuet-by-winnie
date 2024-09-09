@@ -94,7 +94,6 @@ const options = {
           return null;
         }
 
-        // Create gradient
         const gradient = ctx.chart.ctx.createLinearGradient(chartArea.left, 0, chartArea.right, chartArea.bottom);
         gradient.addColorStop(0.071, 'rgba(0, 151, 232, 0.2)');
         gradient.addColorStop(0.6473, 'rgba(1, 143, 255, 0)');

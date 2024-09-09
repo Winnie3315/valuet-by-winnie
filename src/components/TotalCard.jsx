@@ -1,35 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { useHttpRequest } from '../hooks/http.request';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
-function TotalCard({ assets, display }) {
-  const totalValue = assets.reduce((sum, asset) => sum + asset.value, 0);
+function TotalCard({ display }) {
+  const [wallets, setWallets] = useState([]);
+  const [totalBalance, setTotalBalance] = useState(0);
+  const chartRef = useRef(null);
+
+  const { request, loading, error } = useHttpRequest('http://localhost:8080');
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await request(`/wallets?user_id=${user.user_id}`);
+      
+      if (data) {
+        setWallets(data);
+
+        const total = data.reduce((acc, item) => acc + +item.balance, 0);
+        setTotalBalance(total);
+      }
+    };
+
+    fetchData();
+  }, [request, user.user_id]);
+
+  const createGradient = (ctx, index) => {
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    const colors = [
+      ['#FF5733', '#FFBD33'],
+      ['#33FF57', '#33FFBD'],
+      ['#5733FF', '#BD33FF'],
+      ['#FF33BD', '#FF5733'] 
+    ];
+
+    const colorSet = colors[index % colors.length];
+
+    gradient.addColorStop(0, colorSet[0]);
+    gradient.addColorStop(1, colorSet[1]);
+
+    return gradient;
+  };
 
   const data = {
-    labels: assets.map(asset => asset.name),
+    labels: wallets.map(wallet => wallet.wallet),
     datasets: [
       {
-        label: 'Balance Distribution',
-        data: assets.map(asset => (asset.value / totalValue * 100).toFixed(2)), // Percentages
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
+        label: 'Wallets Distribution',
+        data: wallets.map(wallet => wallet.balance),
+        backgroundColor: wallets.map((wallet, index) => {
+          const chart = chartRef.current;
+          if (chart) {
+            const ctx = chart.ctx;
+            return createGradient(ctx, index);
+          }
+          return '#000';
+        }),
+        borderWidth: 1,
       }
     ]
   };
@@ -43,8 +73,8 @@ function TotalCard({ assets, display }) {
       },
       tooltip: {
         callbacks: {
-          label: function (tooltipItem) {
-            return `${tooltipItem.label}: ${tooltipItem.raw}%`;
+          label: function(tooltipItem) {
+            return `${tooltipItem.label}: $${tooltipItem.raw}`;
           }
         }
       }
@@ -55,16 +85,16 @@ function TotalCard({ assets, display }) {
     <div className={`total-card bg-[#161245] p-6 rounded-lg shadow-md w-full max-w-[293px] max-h-[148px] ${display} justify-around`}>
       <div className="sec-total flex justify-center items-center">
         <div className="total-width mb-6 w-[105px] h-[105px] relative flex-wrap">
-          <Doughnut data={data} options={options} />
+          <Doughnut data={data} options={options} ref={chartRef} />
           <h4 className='balance text-[#0097E8] absolute top-[50%] left-[50%]'>TOTAL</h4>
         </div>
       </div>
 
       <div className="space-y-4 h-[100px] overflow-auto balance-scroll">
-        {assets.map((asset, index) => (
+        {wallets.map((wallet, index) => (
           <div className="flex justify-between text-sm text-white" key={index}>
-            <p>{asset.name}</p>
-            <p>{(asset.value / totalValue * 100).toFixed(2)}%</p>
+            <p>{wallet.wallet}</p>
+            <p>${wallet.balance}</p>
           </div>
         ))}
       </div>

@@ -66,6 +66,8 @@ function Wallets() {
                 balance={wallet.balance} 
                 name={wallet.wallet} 
                 currency={wallet.currency}
+                walletId={wallet.id}
+                background={wallet.background}
               />
             ))}
           </div>

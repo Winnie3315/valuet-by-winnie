@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: { min: "280px", max: "639px" },
+        xxs: { min: "100px", max: "320px" },
+      },
       backgroundImage: {
         'custom-radial': 'radial-gradient(63.88% 129.61% at 25.55% 31.91%, #20135C 0%, #140739 92.82%)',
         'btn-cus': 'linear-gradient(88.43deg, #2F3453 11.5%, #242845 76.7%)',

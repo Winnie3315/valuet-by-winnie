@@ -15,6 +15,21 @@
       "name": "шеди ",
       "surname": "sah",
       "password": "Parol1234"
+    },
+    {
+      "id": "a112",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "email": "join@gmil.com",
+      "name": "NAme",
+      "surname": "Surname",
+      "password": "Parol1234"
+    },
+    {
+      "id": "17d2",
+      "email": "name@gmail.com",
+      "name": "name",
+      "surname": "name",
+      "password": "Parol1234"
     }
   ],
   "wallets": [
@@ -33,7 +48,66 @@
       "updated_at": "03.09.2024",
       "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
       "wallet": "Wal",
-      "balance": 11999999878.619995,
+      "balance": 11879579265.019997,
+      "currency": "BTC"
+    },
+    {
+      "id": "280bad33-98e1-4d39-b639-68fa59cf2355",
+      "created_at": "05.09.2024",
+      "updated_at": "05.09.2024",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "balance": "1111111111111111111",
+      "wallet": "Visa",
+      "currency": "BTC"
+    },
+    {
+      "id": "8baf352e-e03e-4e2e-af0f-dac12428d45c",
+      "created_at": "05.09.2024",
+      "updated_at": "05.09.2024",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "balance": "2000",
+      "background": "linear-gradient(90deg, rgb(112, 63, 114), rgb(54, 212, 209), rgb(9, 139, 61))",
+      "wallet": "test",
+      "currency": "USD"
+    },
+    {
+      "id": "8e022d5e-8274-4396-9a35-62cd892ffab8",
+      "created_at": "05.09.2024",
+      "updated_at": "05.09.2024",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "balance": "450",
+      "background": "linear-gradient(90deg, rgb(190, 144, 220))",
+      "wallet": "sobaka",
+      "currency": "BTC"
+    },
+    {
+      "id": "257e2e23-075b-4f31-b2b8-43a70c072c6e",
+      "created_at": "05.09.2024",
+      "updated_at": "05.09.2024",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "balance": 957.56,
+      "background": "linear-gradient(90deg, rgb(219, 125, 76), rgb(137, 214, 129), rgb(159, 11, 200))",
+      "wallet": "post",
+      "currency": "BTC"
+    },
+    {
+      "id": "b67a782f-8a77-4cc3-8642-77a4dd10e4b9",
+      "created_at": "05.09.2024",
+      "updated_at": "05.09.2024",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "balance": "1000",
+      "background": "linear-gradient(90deg, rgb(67, 71, 96), rgb(25, 228, 113), rgb(181, 87, 122))",
+      "wallet": "sobaka",
+      "currency": "BTC"
+    },
+    {
+      "id": "52b0d19a-3ca1-4713-bd70-128fe1e34acd",
+      "created_at": "08.09.2024",
+      "updated_at": "08.09.2024",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "balance": "12000",
+      "background": "linear-gradient(90deg, rgb(151, 253, 87), rgb(227, 37, 61), rgb(70, 30, 216))",
+      "wallet": "Wal",
       "currency": "BTC"
     }
   ],
@@ -58,6 +132,117 @@
       "recipient_wallet": {
         "balance": null
       }
+    },
+    {
+      "id": "ebf330cb-50b2-47ec-b27c-c10391e6c8e1",
+      "created_at": "20240905, 21:59",
+      "updated_at": "21:59:47",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 2000000,
+      "commission": 0,
+      "category": "Categ",
+      "description": "I wana help",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 2000000
+    },
+    {
+      "id": "8bae4479-06e2-4566-a3b7-1bb9940245ad",
+      "created_at": "20240905, 22:06",
+      "updated_at": "22:06:44",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 120019990,
+      "commission": 2400399.8000000003,
+      "category": "Categ",
+      "description": "I wana help",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 122420389.8
+    },
+    {
+      "id": "7296bb91-b3ed-415a-a8d2-7e1444ab2a70",
+      "created_at": "20240905, 22:27",
+      "updated_at": "22:27:17",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 1,
+      "commission": 0,
+      "category": "1",
+      "description": "1",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 1
+    },
+    {
+      "id": "b0f72698-c83b-46cc-aae9-41a2a9570830",
+      "created_at": "20240905, 22:29",
+      "updated_at": "22:29:44",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 20,
+      "commission": 0,
+      "category": "1",
+      "description": "1",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 20
+    },
+    {
+      "id": "4ce4753b-009a-4d8e-b04e-9d2bc294c40e",
+      "created_at": "20240905, 22:29",
+      "updated_at": "22:29:56",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 40,
+      "commission": 0.8,
+      "category": "1",
+      "description": "1",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 40.8
+    },
+    {
+      "id": "ae6e2cd2-3385-44de-8a55-5b69fec93ff2",
+      "created_at": "20240905, 22:43",
+      "updated_at": "22:43:46",
+      "user_id": "e85fa9d6-6fa2-4327-ad88-787d43ae3ab6",
+      "amount": 200,
+      "commission": 4,
+      "category": "1",
+      "description": "1",
+      "wallet_id": "3c2917c7-ea61-4147-81c7-3ff19e69da23",
+      "total": 204
+    },
+    {
+      "id": "594637be-e5c4-462c-92ff-4f4cc99af4be",
+      "created_at": "20240905, 23:16",
+      "updated_at": "23:16:31",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "amount": 1,
+      "commission": 0.02,
+      "category": "Categ",
+      "description": "1",
+      "wallet_id": "257e2e23-075b-4f31-b2b8-43a70c072c6e",
+      "total": 1.02,
+      "wallet_name": "post"
+    },
+    {
+      "id": "28166a12-2cc5-4d20-afda-77b454440498",
+      "created_at": "20240907, 15:47",
+      "updated_at": "15:47:48",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "amount": 1,
+      "commission": 0.02,
+      "category": "1",
+      "description": "1",
+      "wallet_id": "257e2e23-075b-4f31-b2b8-43a70c072c6e",
+      "total": 1.02,
+      "wallet_name": "post"
+    },
+    {
+      "id": "a3ab1b51-28a6-40d5-abc7-5d986f57d191",
+      "created_at": "20240909, 11:28",
+      "updated_at": "11:28:38",
+      "user_id": "ae0e4ffb-4c32-403d-b34a-8acc3830ee03",
+      "amount": 1000,
+      "commission": 20,
+      "category": "Donat",
+      "description": "dobnation",
+      "wallet_id": "257e2e23-075b-4f31-b2b8-43a70c072c6e",
+      "total": 1020,
+      "wallet_name": "post"
     }
   ]
 }

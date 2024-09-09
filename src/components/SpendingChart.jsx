@@ -15,7 +15,7 @@ const SpendingChart = () => {
     useEffect(() => {
         const fetchSpendingData = async () => {
             try {
-                const data = await request('/transactions', 'get');
+                const data = await request('/transactions?user_id=' + user.user_id, 'get');
                 if (data) {
                     const groupedData = data.reduce((acc, transaction) => {
                         const date = moment(transaction.created_at, 'YYYY-MM-DD')
